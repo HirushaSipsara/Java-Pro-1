@@ -26,6 +26,7 @@ class AddCustomerForm extends JFrame{
         setLocationRelativeTo(null);
 
         JPanel hederPamel=new JPanel(new GridLayout(2,1,3,3));
+        hederPamel.setBackground(new Color(118,181,197));
         JLabel titleLabel=new JLabel("Add Customer Form");
         titleLabel.setFont(new Font("",1,35));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -33,13 +34,17 @@ class AddCustomerForm extends JFrame{
 
         ID=contactidgenarate();
 
+        JPanel conIdPanal= new JPanel(new FlowLayout(FlowLayout.LEFT));
+        conIdPanal.setBackground(new Color(66,144,253,255));
         JLabel lblId=new JLabel("Contact ID - " + ID);
         lblId.setFont(new Font("",1,20));
-        hederPamel.add(lblId);
+        conIdPanal.add(lblId);
+        hederPamel.add(conIdPanal);
 
         add("North",hederPamel);
 
         JPanel buttonPanel=new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.setBackground(new Color(66,144,253,255));
         btnAddCustomer=new JButton("Add Customer");
         btnAddCustomer.setFont(new Font("",1,20));
         btnAddCustomer.addActionListener(new ActionListener(){
@@ -51,11 +56,11 @@ class AddCustomerForm extends JFrame{
                 double salary=Double.parseDouble(txtSalary.getText());
                 String birth=txtBirth.getText();
                 if(no.length()!= 10 || no.charAt(0)!='0') {
-                    new ChangeNo().setVisible(true);
+                    ErrorNo.ENo();
                 }else if(salary<0){
-                    new ChangeSalary().setVisible(true);
+                    ErrorSalary.ESalary();
                 }else if(!(checkBirthday(birth))) {
-                    new ChangeBirth().setVisible(true);
+                    ErrorBirth.EBirth();
                 }else{
                     Contact contact = new Contact(id, name, no, cName, salary, birth);
                     CustomerMainForm.contactLIST.add(contact);
@@ -81,6 +86,7 @@ class AddCustomerForm extends JFrame{
 
 
         JPanel labelPanel=new JPanel(new GridLayout(5,1,3,3));
+        labelPanel.setBackground(new Color(66,144,253,255));
         JLabel lblName=new JLabel("Name");
         lblName.setFont(new Font("",1,20));
         labelPanel.add(lblName);
@@ -104,37 +110,43 @@ class AddCustomerForm extends JFrame{
         add("West",labelPanel);
 
         JPanel textPanel=new JPanel(new GridLayout(5,1,3,3));
+        textPanel.setBackground(new Color(66,144,253,255));
         txtName=new JTextField(10);
         txtName.setFont(new Font("",1,20));
         JPanel nameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
+        nameTextPanel.setBackground(new Color(66,144,253,255));
         nameTextPanel.add(txtName);
         textPanel.add(nameTextPanel);
 
         txtNo=new JTextField(15);
         txtNo.setFont(new Font("",1,20));
         JPanel noTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
+        noTextPanel.setBackground(new Color(66,144,253,255));
         noTextPanel.add(txtNo);
         textPanel.add(noTextPanel);
 
         txtCName=new JTextField(15);
         txtCName.setFont(new Font("",1,20));
         JPanel CNameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
+        CNameTextPanel.setBackground(new Color(66,144,253,255));
         CNameTextPanel.add(txtCName);
         textPanel.add(CNameTextPanel);
 
         txtSalary=new JTextField(6);
         txtSalary.setFont(new Font("",1,20));
         JPanel salaryTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
+        salaryTextPanel.setBackground(new Color(66,144,253,255));
         salaryTextPanel.add(txtSalary);
         textPanel.add(salaryTextPanel);
 
         txtBirth=new JTextField(10);
         txtBirth.setFont(new Font("",1,20));
         JPanel birthTextPanel=new JPanel(new FlowLayout(FlowLayout.LEFT));
+        birthTextPanel.setBackground(new Color(66,144,253,255));
         birthTextPanel.add(txtBirth);
         textPanel.add(birthTextPanel);
 
-        add("East",textPanel);
+        add(textPanel);
 
     }
 
