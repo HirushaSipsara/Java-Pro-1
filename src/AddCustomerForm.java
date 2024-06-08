@@ -14,9 +14,6 @@ class AddCustomerForm extends JFrame{
     private JTextField txtBirth;
     private String ID;
 
-    private ChangeNo changeNo;
-    private ChangeSalary changeSalary;
-    private ChangeBirth changeBirth;
     private SuccessNotify successNotify;
 
     AddCustomerForm(){
