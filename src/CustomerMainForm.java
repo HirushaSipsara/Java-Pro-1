@@ -22,31 +22,21 @@ public class CustomerMainForm extends JFrame{
     private ViewCustomerForm viewCustomerForm;
 
     CustomerMainForm(){
-        setSize(600,400);
+        setSize(800,500);
         setTitle("Main Form");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel LestPanel=new JPanel(new GridLayout(1,2));
-        JPanel imgPamel=new JPanel(new GridLayout(7,1,10, 10));
-        imgPamel.setBackground(new Color(66,144,253,255));
 
-        JLabel NtitleLabel=new JLabel("Home Page");
-        NtitleLabel.setFont(new Font("",1,35));
-        NtitleLabel.setHorizontalAlignment(JLabel.CENTER);
-        NtitleLabel.setForeground(new Color(248, 205, 248));
-        imgPamel.add(NtitleLabel);
+        ImagePanel imgPanel = new ImagePanel("friend.jpg"); // Use the custom panel
+        imgPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        JLabel backimg;
-        backimg = new JLabel(new ImageIcon("./imsges/friend.jpg"));
-        backimg.setLayout(new GridBagLayout());
-        imgPamel.add(backimg, BorderLayout.WEST);
+        LestPanel.add(imgPanel);
 
-        LestPanel.add(imgPamel);
 
         JPanel homePamel=new JPanel(new GridLayout(8,1));
-        homePamel.setBackground(new Color( 118,103,112));
-
+        homePamel.setBackground(new Color(133, 232, 210));
 
         JLabel titleLabel=new JLabel("Home Page");
         titleLabel.setFont(new Font("",1,35));
@@ -64,7 +54,7 @@ public class CustomerMainForm extends JFrame{
             }
         });
         JPanel AddTextPanel =new JPanel(new FlowLayout(FlowLayout.CENTER));
-        AddTextPanel.setBackground(new Color( 118,103,112));
+        AddTextPanel.setBackground(new Color( 133, 232, 210));
         AddTextPanel.add(btnAddCustomer);
         homePamel.add(AddTextPanel);
 
@@ -79,7 +69,7 @@ public class CustomerMainForm extends JFrame{
             }
         });
         JPanel UppTextPanel =new JPanel(new FlowLayout(FlowLayout.CENTER));
-        UppTextPanel.setBackground(new Color( 118,103,112));
+        UppTextPanel.setBackground(new Color( 133, 232, 210));
         UppTextPanel.add(btnUpdateCustomer);
         homePamel.add(UppTextPanel);
 
@@ -94,7 +84,7 @@ public class CustomerMainForm extends JFrame{
             }
         });
         JPanel DelTextPanel =new JPanel(new FlowLayout(FlowLayout.CENTER));
-        DelTextPanel.setBackground(new Color( 118,103,112));
+        DelTextPanel.setBackground(new Color( 133, 232, 210));
         DelTextPanel.add(btnDeleteCustomer);
         homePamel.add(DelTextPanel);
 
@@ -109,7 +99,7 @@ public class CustomerMainForm extends JFrame{
             }
         });
         JPanel SeaTextPanel =new JPanel(new FlowLayout(FlowLayout.CENTER));
-        SeaTextPanel.setBackground(new Color( 118,103,112));
+        SeaTextPanel.setBackground(new Color( 133, 232, 210));
         SeaTextPanel.add(btnSearchCustomer);
         homePamel.add(SeaTextPanel);
 
@@ -124,7 +114,7 @@ public class CustomerMainForm extends JFrame{
             }
         });
         JPanel LisTextPanel =new JPanel(new FlowLayout(FlowLayout.CENTER));
-        LisTextPanel.setBackground(new Color( 118,103,112));
+        LisTextPanel.setBackground(new Color( 133, 232, 210));
         LisTextPanel.add(btnListCustomers);
         homePamel.add(LisTextPanel);
 
@@ -139,7 +129,7 @@ public class CustomerMainForm extends JFrame{
             }
         });
         JPanel VieTextPanel =new JPanel(new FlowLayout(FlowLayout.CENTER));
-        VieTextPanel.setBackground(new Color( 118,103,112));
+        VieTextPanel.setBackground(new Color( 133, 232, 210));
         VieTextPanel.add(btnViewCustomer);
         homePamel.add(VieTextPanel);
 
@@ -154,11 +144,26 @@ public class CustomerMainForm extends JFrame{
             }
         });
         JPanel ExitTextPanel =new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        ExitTextPanel.setBackground(new Color( 118,103,112));
+        ExitTextPanel.setBackground(new Color( 133, 232, 210));
         ExitTextPanel.add(btnExit);
         homePamel.add(ExitTextPanel);
 
         LestPanel.add("Center",homePamel);
         add(LestPanel);
+    }
+}
+
+class ImagePanel extends JPanel {
+    private Image image;
+
+    public ImagePanel(String imagePath) {
+        this.image = new ImageIcon(imagePath).getImage();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Draw the image such that it fits within the panel
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
 }
