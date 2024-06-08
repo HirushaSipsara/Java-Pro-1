@@ -17,7 +17,7 @@ class AddCustomerForm extends JFrame{
     private SuccessNotify successNotify;
 
     AddCustomerForm(){
-        setSize(500,500);
+        setSize(600,400);
         setTitle("Add Customer Form");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);

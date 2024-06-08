@@ -6,9 +6,10 @@ class ViewCustomerForm extends JFrame{
     private JButton btnReload;
     private JTable tblCustomerDetails;
     private DefaultTableModel dtm;
+    private Object[] rowData=new Object[6];
 
     ViewCustomerForm(){
-        setSize(400,300);
+        setSize(600,400);
         setTitle("View Customer Form");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -28,7 +29,7 @@ class ViewCustomerForm extends JFrame{
 
                 for (int i = 0; i < CustomerMainForm.contactLIST.size(); i++){
                     Contact contact =CustomerMainForm.contactLIST.get(i);
-                    Object[] rowData={contact.getId(), contact.getName(), contact.getNo(),contact.getCName(), contact.getSalary(), contact.getBirth()};
+                    rowData= new Object[]{contact.getId(), contact.getName(), contact.getNo(), contact.getCName(), contact.getSalary(), contact.getBirth()};
                     dtm.addRow(rowData);
                 }
             }

@@ -22,7 +22,7 @@ public class CustomerMainForm extends JFrame{
     private ViewCustomerForm viewCustomerForm;
 
     CustomerMainForm(){
-        setSize(600,600);
+        setSize(600,400);
         setTitle("Main Form");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -54,7 +54,7 @@ public class CustomerMainForm extends JFrame{
         homePamel.add(titleLabel);
 
         btnAddCustomer=new JButton("Add Customer");
-        btnAddCustomer.setFont(new Font("",1,20));
+        btnAddCustomer.setPreferredSize(new Dimension(200, 30));
         btnAddCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(addCustomerForm==null){
@@ -69,7 +69,7 @@ public class CustomerMainForm extends JFrame{
         homePamel.add(AddTextPanel);
 
         btnUpdateCustomer=new JButton("Update Customer");
-        btnUpdateCustomer.setFont(new Font("",1,20));
+        btnUpdateCustomer.setPreferredSize(new Dimension(200, 30));
         btnUpdateCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(updateCustomerForm==null){
@@ -84,7 +84,7 @@ public class CustomerMainForm extends JFrame{
         homePamel.add(UppTextPanel);
 
         btnDeleteCustomer=new JButton("Delete Customer");
-        btnDeleteCustomer.setFont(new Font("",1,20));
+        btnDeleteCustomer.setPreferredSize(new Dimension(200, 30));;
         btnDeleteCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(deleteCustomerForm==null){
@@ -99,7 +99,7 @@ public class CustomerMainForm extends JFrame{
         homePamel.add(DelTextPanel);
 
         btnSearchCustomer=new JButton("Search Customer");
-        btnSearchCustomer.setFont(new Font("",1,20));
+        btnSearchCustomer.setPreferredSize(new Dimension(200, 30));
         btnSearchCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(searchCustomerForm==null){
@@ -114,7 +114,7 @@ public class CustomerMainForm extends JFrame{
         homePamel.add(SeaTextPanel);
 
         btnListCustomers=new JButton("List Customer");
-        btnListCustomers.setFont(new Font("",1,20));
+        btnListCustomers.setPreferredSize(new Dimension(200, 30));
         btnListCustomers.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(listCustomerForm==null){
@@ -129,7 +129,7 @@ public class CustomerMainForm extends JFrame{
         homePamel.add(LisTextPanel);
 
         btnViewCustomer=new JButton("View Customer Form");
-        btnViewCustomer.setFont(new Font("",1,20));
+        btnViewCustomer.setPreferredSize(new Dimension(200, 30));
         btnViewCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(viewCustomerForm==null){

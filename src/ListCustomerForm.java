@@ -13,7 +13,7 @@ class ListCustomerForm extends JFrame{
     private DefaultTableModel dtm;
 
     ListCustomerForm(){
-        setSize(900,600);
+        setSize(600,400);
         setTitle("View Customer Form");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
