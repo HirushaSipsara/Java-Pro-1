@@ -157,42 +157,32 @@ class UpdateCustomerForm extends JFrame{
 
         add("West", labelPanel);
 
-        JPanel textPanel=new JPanel(new GridLayout(5,1,3,3));
-        textPanel.setBackground(new Color(66,144,253,255));
-        txtName=new JTextField(10);
-        txtName.setFont(new Font("",1,20));
-        JPanel nameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
-        nameTextPanel.setBackground(new Color(66,144,253,255));
-        nameTextPanel.add(txtName);
-        textPanel.add(nameTextPanel);
+        JPanel textPanel = new JPanel(new GridLayout(6, 1, 3, 3));
+        textPanel.setBackground(new Color(66, 144, 253, 255));
 
-        txtNo=new JTextField(15);
-        txtNo.setFont(new Font("",1,20));
-        JPanel noTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
-        noTextPanel.setBackground(new Color(66,144,253,255));
-        noTextPanel.add(txtNo);
-        textPanel.add(noTextPanel);
+        txtId = new JTextField();
+        txtId.setFont(new Font("", Font.BOLD, 20));
+        textPanel.add(txtId);
 
-        txtCName=new JTextField(15);
-        txtCName.setFont(new Font("",1,20));
-        JPanel CNameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
-        CNameTextPanel.setBackground(new Color(66,144,253,255));
-        CNameTextPanel.add(txtCName);
-        textPanel.add(CNameTextPanel);
+        txtName = new JTextField();
+        txtName.setFont(new Font("", Font.BOLD, 20));
+        textPanel.add(txtName);
 
-        txtSalary=new JTextField(6);
-        txtSalary.setFont(new Font("",1,20));
-        JPanel salaryTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
-        salaryTextPanel.setBackground(new Color(66,144,253,255));
-        salaryTextPanel.add(txtSalary);
-        textPanel.add(salaryTextPanel);
+        txtNo = new JTextField();
+        txtNo.setFont(new Font("", Font.BOLD, 20));
+        textPanel.add(txtNo);
 
-        txtBirth=new JTextField(10);
-        txtBirth.setFont(new Font("",1,20));
-        JPanel birthTextPanel=new JPanel(new FlowLayout(FlowLayout.LEFT));
-        birthTextPanel.setBackground(new Color(66,144,253,255));
-        birthTextPanel.add(txtBirth);
-        textPanel.add(birthTextPanel);
+        txtCName = new JTextField();
+        txtCName.setFont(new Font("", Font.BOLD, 20));
+        textPanel.add(txtCName);
+
+        txtSalary = new JTextField();
+        txtSalary.setFont(new Font("", Font.BOLD, 20));
+        textPanel.add(txtSalary);
+
+        txtBirth = new JTextField();
+        txtBirth.setFont(new Font("", Font.BOLD, 20));
+        textPanel.add(txtBirth);
 
         add("Center", textPanel);
     }
