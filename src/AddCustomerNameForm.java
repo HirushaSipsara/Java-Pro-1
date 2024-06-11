@@ -8,12 +8,12 @@ class AddCustomerNameForm extends JFrame{
     private final JTextField txtName;
 
     AddCustomerNameForm(){
-        setSize(400,300);
-        setTitle("Add Customer Form");
+        setSize(400,200);
+        setTitle("Add Customer Name Form");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JLabel titleLabel=new JLabel("Add Customer Form");
+        JLabel titleLabel=new JLabel("Add Customer Name");
         titleLabel.setFont(new Font("",1,35));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         add("North",titleLabel);
@@ -21,8 +21,7 @@ class AddCustomerNameForm extends JFrame{
         i=UpdateCustomerForm.index;
 
         JPanel buttonPanel=new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        btnAddCustomer=new JButton("Add Customer");
-        btnAddCustomer.setFont(new Font("",1,20));
+        btnAddCustomer=new JButton("Add Name");
         btnAddCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 String Nname=txtName.getText();
@@ -33,32 +32,29 @@ class AddCustomerNameForm extends JFrame{
         buttonPanel.add(btnAddCustomer);
 
         btnCancel=new JButton("Cancel");
-        btnCancel.setFont(new Font("",1,20));
+        btnCancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                dispose();
+            }
+        });
         buttonPanel.add(btnCancel);
 
         add("South",buttonPanel);
 
-        JPanel labelPanel=new JPanel(new GridLayout(1,1,3,3));
+        JPanel labelPanel=new JPanel(new GridLayout(1,2,3,3));
 
+        JPanel nameTextArea =new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblName=new JLabel("Name");
         lblName.setFont(new Font("",1,20));
-        labelPanel.add(lblName);
-
-
-        add("West",labelPanel);
-
-        JPanel textPanel=new JPanel(new GridLayout(6,1,3,3));
-
+        nameTextArea.add(lblName);
+        labelPanel.add(nameTextArea);
 
         txtName=new JTextField(10);
         txtName.setFont(new Font("",1,20));
         JPanel nameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
         nameTextPanel.add(txtName);
-        textPanel.add(nameTextPanel);
+        labelPanel.add(nameTextPanel);
 
-
-
-        add("East",textPanel);
-
+        add("Center",labelPanel);
     }
 }

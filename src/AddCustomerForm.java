@@ -3,8 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.time.LocalDate;
 class AddCustomerForm extends JFrame{
-    private final JButton btnAddCustomer;
-    private final JButton btnCancel;
+    private JButton btnAddCustomer;
+    private JButton btnCancel;
+    private JButton btnHome;
 
     private JTextField txtId;
     private JTextField txtName;
@@ -17,7 +18,7 @@ class AddCustomerForm extends JFrame{
     private SuccessNotify successNotify;
 
     AddCustomerForm(){
-        setSize(600,400);
+        setSize(450,500);
         setTitle("Add Customer Form");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -40,10 +41,12 @@ class AddCustomerForm extends JFrame{
 
         add("North",hederPamel);
 
-        JPanel buttonPanel=new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JPanel buttonPanel =new JPanel(new BorderLayout());
+        JPanel btntoppanel =new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JPanel btnbottompanel=new JPanel(new FlowLayout(FlowLayout.RIGHT));
+
         buttonPanel.setBackground(new Color(66,144,253,255));
         btnAddCustomer=new JButton("Add Customer");
-        btnAddCustomer.setFont(new Font("",1,20));
         btnAddCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 String id=ID;
@@ -67,84 +70,105 @@ class AddCustomerForm extends JFrame{
                 }
             }
         });
-
-        buttonPanel.add(btnAddCustomer);
+        btntoppanel.add(btnAddCustomer);
 
         btnCancel=new JButton("Cancel");
-        btnCancel.setFont(new Font("",1,20));
         btnCancel.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 dispose();
+                new AddCustomerForm().setVisible(true);
             }
         });
-        buttonPanel.add(btnCancel);
+        btntoppanel.add(btnCancel);
+        btntoppanel.setBackground(new Color(66,144,253,255));
+        buttonPanel.add("North",btntoppanel);
 
+        btnHome=new JButton("Go To HomePage");
+        btnHome.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                dispose();
+                new CustomerMainForm().setVisible(true);
+            }
+        });
+        btnbottompanel.add(btnHome);
+        btnbottompanel.setBackground(new Color(66,144,253,255));
+        buttonPanel.add("South",btnbottompanel);
         add("South",buttonPanel);
 
-
-        JPanel labelPanel=new JPanel(new GridLayout(5,1,3,3));
+        JPanel labelPanel=new JPanel(new GridLayout(5,2));
         labelPanel.setBackground(new Color(66,144,253,255));
+
         JLabel lblName=new JLabel("Name");
         lblName.setFont(new Font("",1,20));
-        labelPanel.add(lblName);
+        JPanel lblnamepanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblnamepanel.setBackground(new Color(66,144,253,255));
+        lblnamepanel.add(lblName);
+        labelPanel.add(lblnamepanel);
 
-        JLabel lblAddress=new JLabel("Phone No");
-        lblAddress.setFont(new Font("",1,20));
-        labelPanel.add(lblAddress);
-
-        JLabel lblCName =new JLabel("Company Name");
-        lblCName.setFont(new Font("",1,20));
-        labelPanel.add(lblCName);
-
-        JLabel lblSalary=new JLabel("Salary");
-        lblSalary.setFont(new Font("",1,20));
-        labelPanel.add(lblSalary);
-
-        JLabel lblBirth=new JLabel("Date of Birth");
-        lblBirth.setFont(new Font("",1,20));
-        labelPanel.add(lblBirth);
-
-        add("West",labelPanel);
-
-        JPanel textPanel=new JPanel(new GridLayout(5,1,3,3));
-        textPanel.setBackground(new Color(66,144,253,255));
         txtName=new JTextField(10);
         txtName.setFont(new Font("",1,20));
         JPanel nameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
         nameTextPanel.setBackground(new Color(66,144,253,255));
         nameTextPanel.add(txtName);
-        textPanel.add(nameTextPanel);
+        labelPanel.add(nameTextPanel);
 
-        txtNo=new JTextField(15);
+        JLabel lblNo=new JLabel("Phone No");
+        lblNo.setFont(new Font("",1,20));
+        JPanel lblphonepanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblphonepanel.setBackground(new Color(66,144,253,255));
+        lblphonepanel.add(lblNo);
+        labelPanel.add(lblphonepanel);
+
+        txtNo=new JTextField(10);
         txtNo.setFont(new Font("",1,20));
         JPanel noTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
         noTextPanel.setBackground(new Color(66,144,253,255));
         noTextPanel.add(txtNo);
-        textPanel.add(noTextPanel);
+        labelPanel.add(noTextPanel);
 
-        txtCName=new JTextField(15);
+        JLabel lblCName =new JLabel("Company Name");
+        lblCName.setFont(new Font("",1,20));
+        JPanel lblcompanypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblcompanypanel.setBackground(new Color(66,144,253,255));
+        lblcompanypanel.add(lblCName);
+        labelPanel.add(lblcompanypanel);
+
+        txtCName=new JTextField(10);
         txtCName.setFont(new Font("",1,20));
         JPanel CNameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
         CNameTextPanel.setBackground(new Color(66,144,253,255));
         CNameTextPanel.add(txtCName);
-        textPanel.add(CNameTextPanel);
+        labelPanel.add(CNameTextPanel);
+
+        JLabel lblSalary=new JLabel("Salary");
+        lblSalary.setFont(new Font("",1,20));
+        JPanel lblsalarypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblsalarypanel.setBackground(new Color(66,144,253,255));
+        lblsalarypanel.add(lblSalary);
+        labelPanel.add(lblsalarypanel);
 
         txtSalary=new JTextField(6);
         txtSalary.setFont(new Font("",1,20));
         JPanel salaryTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
         salaryTextPanel.setBackground(new Color(66,144,253,255));
         salaryTextPanel.add(txtSalary);
-        textPanel.add(salaryTextPanel);
+        labelPanel.add(salaryTextPanel);
+
+        JLabel lblBirth=new JLabel("Date of Birth");
+        lblBirth.setFont(new Font("",1,20));
+        JPanel lblbdaypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblbdaypanel.setBackground(new Color(66,144,253,255));
+        lblbdaypanel.add(lblBirth);
+        labelPanel.add(lblbdaypanel);
 
         txtBirth=new JTextField(10);
         txtBirth.setFont(new Font("",1,20));
         JPanel birthTextPanel=new JPanel(new FlowLayout(FlowLayout.LEFT));
         birthTextPanel.setBackground(new Color(66,144,253,255));
         birthTextPanel.add(txtBirth);
-        textPanel.add(birthTextPanel);
+        labelPanel.add(birthTextPanel);
 
-        add(textPanel);
-
+        add("Center",labelPanel);
     }
 
     public static String contactidgenarate(){

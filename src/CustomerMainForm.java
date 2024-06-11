@@ -24,12 +24,12 @@ public class CustomerMainForm extends JFrame{
     CustomerMainForm(){
         setSize(800,500);
         setTitle("Main Form");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel LestPanel=new JPanel(new GridLayout(1,2));
 
-        ImagePanel imgPanel = new ImagePanel("friend.jpg"); // Use the custom panel
+        ImagePanel imgPanel = new ImagePanel("ifriend.jpeg"); // Use the custom panel
         imgPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         LestPanel.add(imgPanel);
@@ -48,6 +48,7 @@ public class CustomerMainForm extends JFrame{
         btnAddCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(addCustomerForm==null){
+                    dispose();
                     addCustomerForm=new AddCustomerForm();
                 }
                 addCustomerForm.setVisible(true);
@@ -63,6 +64,7 @@ public class CustomerMainForm extends JFrame{
         btnUpdateCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(updateCustomerForm==null){
+                    dispose();
                     updateCustomerForm=new UpdateCustomerForm();
                 }
                 updateCustomerForm.setVisible(true);
@@ -78,6 +80,7 @@ public class CustomerMainForm extends JFrame{
         btnDeleteCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(deleteCustomerForm==null){
+                    dispose();
                     deleteCustomerForm=new DeleteCustomerForm();
                 }
                 deleteCustomerForm.setVisible(true);
@@ -93,6 +96,7 @@ public class CustomerMainForm extends JFrame{
         btnSearchCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(searchCustomerForm==null){
+                    dispose();
                     searchCustomerForm=new SearchCustomerForm();
                 }
                 searchCustomerForm.setVisible(true);
@@ -108,6 +112,7 @@ public class CustomerMainForm extends JFrame{
         btnListCustomers.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(listCustomerForm==null){
+                    dispose();
                     listCustomerForm=new ListCustomerForm();
                 }
                 listCustomerForm.setVisible(true);

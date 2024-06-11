@@ -15,6 +15,8 @@ class UpdateCustomerForm extends JFrame{
     private JTextField txtSalary;
     private JTextField txtBirth;
 
+    private JButton cns;
+    private JButton Home;
     private JButton btnUpdateName;
     private JButton btnUpdateNo;
     private JButton btnCName;
@@ -26,42 +28,36 @@ class UpdateCustomerForm extends JFrame{
     private AddCustomerSalaryForm addCustomerSalaryForm;
 
     UpdateCustomerForm() {
-        setSize(600, 400);
+        setSize(600, 500);
         setTitle("View Customer Form");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JPanel upperPanel = new JPanel(new GridLayout(2, 1, 3, 3));
-        JLabel titleLabel = new JLabel("Search Customer Form");
-        titleLabel.setFont(new Font("", Font.BOLD, 30));
-        titleLabel.setHorizontalAlignment(JLabel.CENTER);
-        upperPanel.add(titleLabel);
+        JPanel Top = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        Top.setBackground(Color.CYAN);
+        JLabel heading = new JLabel("Update Contacts");
+        heading.setFont(new Font("", Font.BOLD, 35));
+        Top.add(heading);
 
-        JPanel searchPanel = new JPanel(new GridLayout(1, 2, 3, 3));
-        JLabel lblsearch = new JLabel("Search");
-        lblsearch.setFont(new Font("", Font.BOLD, 20));
-        searchPanel.add(lblsearch);
+        JPanel searchPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
 
-        JPanel barPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        txtSearch = new JTextField(15);
-        txtSearch.setFont(new Font("", Font.BOLD, 20));
-        barPanel.add(txtSearch);
-        searchPanel.add(barPanel);
+        JTextField searchby = new JTextField("", 15);
+        searchby.setFont(new Font("", 0, 20));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(0, 0, 0, 0); // No margin
+        searchPanel.add(searchby, gbc);
 
-        upperPanel.add(searchPanel);
-        add("North", upperPanel);
-
-        JPanel downPanel = new JPanel(new GridLayout(2, 3, 3, 3));
-        btnEnter = new JButton("Enter");
-        btnEnter.setFont(new Font("", Font.BOLD, 20));
-        downPanel.add(btnEnter);
-
-        btnEnter.addActionListener(new ActionListener() {
+        JButton search = new JButton("Search");
+        search.setFont(new Font("", 1, 20));
+        search.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                boolean found = false; // Flag to check if contact is found
+                boolean found = false;
                 for (int i = 0; i < CustomerMainForm.contactLIST.size(); i++) {
                     Contact contact = CustomerMainForm.contactLIST.get(i);
-                    if (txtSearch.getText().equals(contact.getName()) || txtSearch.getText().equals(contact.getNo())) {
+                    if (searchby.getText().equals(contact.getName()) || searchby.getText().equals(contact.getNo())) {
                         index=i;
                         txtId.setText(contact.getId());
                         txtName.setText(contact.getName());
@@ -69,17 +65,43 @@ class UpdateCustomerForm extends JFrame{
                         txtCName.setText(contact.getCName());
                         txtSalary.setText(String.valueOf(contact.getSalary()));
                         txtBirth.setText(contact.getBirth());
-                        found = true; // Contact found
-                        break; // Exit loop once contact is found
+                        found = true;
+                        break;
                     }
                 }
                 if (!found) {
-                    JOptionPane.showMessageDialog(null, "Contact not found.");
+                    JOptionPane.showMessageDialog(null, "Customer not found", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(0, 5, 0, 0); // Add a small right margin to reduce the gap
+
+        searchPanel.add(search, gbc);
+
+        JPanel TopPanel = new JPanel(new BorderLayout());
+        TopPanel.add("North", Top);
+        TopPanel.add("South", searchPanel);
+
+        add("North", TopPanel);
+
+        JPanel ButtonPanel =new JPanel(new BorderLayout());
+        JPanel btntoppanel =new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JPanel btnbottompanel=new JPanel(new FlowLayout(FlowLayout.RIGHT));
+
+
+        cns=new JButton("Cancel");
+        cns.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                dispose();
+                new UpdateCustomerForm().setVisible(true);
+            }
+        });
+        btntoppanel.add(cns);
+
         btnUpdateName=new JButton("Update Name");
-        btnUpdateName.setFont(new Font("",1,20));
         btnUpdateName.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(addCustomerNameForm==null){
@@ -88,10 +110,9 @@ class UpdateCustomerForm extends JFrame{
                 addCustomerNameForm.setVisible(true);
             }
         });
-        downPanel.add(btnUpdateName);
+        btntoppanel.add(btnUpdateName);
 
         btnUpdateNo=new JButton("Update Pno");
-        btnUpdateNo.setFont(new Font("",1,20));
         btnUpdateNo.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(addCustomerNoForm==null){
@@ -100,10 +121,9 @@ class UpdateCustomerForm extends JFrame{
                 addCustomerNoForm.setVisible(true);
             }
         });
-        downPanel.add(btnUpdateNo);
+        btntoppanel.add(btnUpdateNo);
 
         btnCName=new JButton("Update Company");
-        btnCName.setFont(new Font("",1,20));
         btnCName.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(addCustomerCNameForm==null){
@@ -112,10 +132,9 @@ class UpdateCustomerForm extends JFrame{
                 addCustomerCNameForm.setVisible(true);
             }
         });
-        downPanel.add(btnCName);
+        btntoppanel.add(btnCName);
 
         btnSalary=new JButton("Update Salary");
-        btnSalary.setFont(new Font("",1,20));
         btnSalary.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 if(addCustomerSalaryForm==null){
@@ -124,66 +143,97 @@ class UpdateCustomerForm extends JFrame{
                 addCustomerSalaryForm.setVisible(true);
             }
         });
-        downPanel.add(btnSalary);
+        btntoppanel.add(btnSalary);
 
-        add("South", downPanel);
+        ButtonPanel.add("North",btntoppanel);
 
-        JPanel labelPanel = new JPanel(new GridLayout(6, 1, 3, 3));
-        labelPanel.setBackground(new Color(66, 144, 253, 255));
+        Home=new JButton("Go To HomePage");
+        Home.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                dispose();
+                new CustomerMainForm().setVisible(true);
+            }
+        });
+        btnbottompanel.add(Home);
 
-        JLabel lblId = new JLabel("Contact ID - ");
-        lblId.setFont(new Font("", Font.BOLD, 20));
-        labelPanel.add(lblId);
+        ButtonPanel.add("South",btnbottompanel);
 
-        JLabel lblName = new JLabel("Name");
-        lblName.setFont(new Font("", Font.BOLD, 20));
-        labelPanel.add(lblName);
+        add("South",ButtonPanel);
 
-        JLabel lblAddress = new JLabel("Phone No");
-        lblAddress.setFont(new Font("", Font.BOLD, 20));
-        labelPanel.add(lblAddress);
+        JPanel Displayl = new JPanel(new GridLayout(6, 2));
 
-        JLabel lblCName = new JLabel("Company Name");
-        lblCName.setFont(new Font("", Font.BOLD, 20));
-        labelPanel.add(lblCName);
+        JLabel lblid = new JLabel("ID");
+        lblid.setFont(new Font("", 1, 20));
+        JPanel lblidpanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblidpanel.add(lblid);
+        Displayl.add(lblidpanel);
 
-        JLabel lblSalary = new JLabel("Salary");
-        lblSalary.setFont(new Font("", Font.BOLD, 20));
-        labelPanel.add(lblSalary);
-
-        JLabel lblBirth = new JLabel("Date of Birth");
-        lblBirth.setFont(new Font("", Font.BOLD, 20));
-        labelPanel.add(lblBirth);
-
-        add("West", labelPanel);
-
-        JPanel textPanel = new JPanel(new GridLayout(6, 1, 3, 3));
-        textPanel.setBackground(new Color(66, 144, 253, 255));
-
-        txtId = new JTextField();
+        JPanel txtidpanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        txtId = new JTextField(6);
         txtId.setFont(new Font("", Font.BOLD, 20));
-        textPanel.add(txtId);
+        txtidpanel.add(txtId);
+        Displayl.add(txtidpanel);
 
-        txtName = new JTextField();
+        JLabel lblname = new JLabel("Name");
+        lblname.setFont(new Font("", 1, 20));
+        JPanel lblnamepanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblnamepanel.add(lblname);
+        Displayl.add(lblnamepanel);
+
+        JPanel txtnamepanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        txtName = new JTextField(10);
         txtName.setFont(new Font("", Font.BOLD, 20));
-        textPanel.add(txtName);
+        txtnamepanel.add(txtName);
+        Displayl.add(txtnamepanel);
 
-        txtNo = new JTextField();
+        JLabel lblphone = new JLabel("Phone No");
+        lblphone.setFont(new Font("", 1, 20));
+        JPanel lblphonepanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblphonepanel.add(lblphone);
+        Displayl.add(lblphonepanel);
+
+        JPanel txtNopanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        txtNo = new JTextField(10);
         txtNo.setFont(new Font("", Font.BOLD, 20));
-        textPanel.add(txtNo);
+        txtNopanel.add(txtNo);
+        Displayl.add(txtNopanel);
 
-        txtCName = new JTextField();
+        JLabel lblcompany = new JLabel("Company");
+        lblcompany.setFont(new Font("", 1, 20));
+        JPanel lblcompanypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblcompanypanel.add(lblcompany);
+        Displayl.add(lblcompanypanel);
+
+        JPanel txtCNamepanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        txtCName = new JTextField(10);
         txtCName.setFont(new Font("", Font.BOLD, 20));
-        textPanel.add(txtCName);
+        txtCNamepanel.add(txtCName);
+        Displayl.add(txtCNamepanel);
 
-        txtSalary = new JTextField();
+        JLabel lblsalary = new JLabel("Salary");
+        lblsalary.setFont(new Font("", 1, 20));
+        JPanel lblsalarypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblsalarypanel.add(lblsalary);
+        Displayl.add(lblsalarypanel);
+
+        JPanel txtSalarypanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        txtSalary = new JTextField(10);
         txtSalary.setFont(new Font("", Font.BOLD, 20));
-        textPanel.add(txtSalary);
+        txtSalarypanel.add(txtSalary);
+        Displayl.add(txtSalarypanel);
 
-        txtBirth = new JTextField();
+        JLabel lblbday = new JLabel("Birthday");
+        lblbday.setFont(new Font("", 1, 20));
+        JPanel lblbdaypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        lblbdaypanel.add(lblbday);
+        Displayl.add(lblbdaypanel);
+
+        JPanel txtBirthpanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        txtBirth = new JTextField(10);
         txtBirth.setFont(new Font("", Font.BOLD, 20));
-        textPanel.add(txtBirth);
+        txtBirthpanel.add(txtBirth);
+        Displayl.add(txtBirthpanel);
 
-        add("Center", textPanel);
+        add("Center", Displayl);
     }
 }
