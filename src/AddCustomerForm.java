@@ -24,8 +24,9 @@ class AddCustomerForm extends JFrame{
         setLocationRelativeTo(null);
 
         JPanel hederPamel=new JPanel(new GridLayout(2,1,3,3));
-        hederPamel.setBackground(new Color(118,181,197));
+        hederPamel.setBackground(Color.CYAN);
         JLabel titleLabel=new JLabel("Add Customer Form");
+        titleLabel.setForeground(new Color(0, 102, 102));
         titleLabel.setFont(new Font("",1,35));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         hederPamel.add(titleLabel);
@@ -33,7 +34,7 @@ class AddCustomerForm extends JFrame{
         ID=contactidgenarate();
 
         JPanel conIdPanal= new JPanel(new FlowLayout(FlowLayout.LEFT));
-        conIdPanal.setBackground(new Color(66,144,253,255));
+        conIdPanal.setBackground(new Color(133, 232, 210));
         JLabel lblId=new JLabel("Contact ID - " + ID);
         lblId.setFont(new Font("",1,20));
         conIdPanal.add(lblId);
@@ -45,8 +46,10 @@ class AddCustomerForm extends JFrame{
         JPanel btntoppanel =new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JPanel btnbottompanel=new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
-        buttonPanel.setBackground(new Color(66,144,253,255));
+        buttonPanel.setBackground(new Color(133, 232, 210));
         btnAddCustomer=new JButton("Add Customer");
+        btnAddCustomer.setBackground(new Color(13, 185, 125)); // Dark Green
+        btnAddCustomer.setForeground(Color.WHITE);
         btnAddCustomer.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 String id=ID;
@@ -73,6 +76,8 @@ class AddCustomerForm extends JFrame{
         btntoppanel.add(btnAddCustomer);
 
         btnCancel=new JButton("Cancel");
+        btnCancel.setBackground(new Color(255, 51, 51)); // Red
+        btnCancel.setForeground(Color.WHITE);
         btnCancel.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 dispose();
@@ -80,10 +85,12 @@ class AddCustomerForm extends JFrame{
             }
         });
         btntoppanel.add(btnCancel);
-        btntoppanel.setBackground(new Color(66,144,253,255));
+        btntoppanel.setBackground(new Color(133, 232, 210));
         buttonPanel.add("North",btntoppanel);
 
         btnHome=new JButton("Go To HomePage");
+        btnHome.setBackground(new Color(125, 19, 234)); // Blue
+        btnHome.setForeground(Color.WHITE);
         btnHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 dispose();
@@ -91,84 +98,85 @@ class AddCustomerForm extends JFrame{
             }
         });
         btnbottompanel.add(btnHome);
-        btnbottompanel.setBackground(new Color(66,144,253,255));
+        btnbottompanel.setBackground(new Color(133, 232, 210));
         buttonPanel.add("South",btnbottompanel);
         add("South",buttonPanel);
 
         JPanel labelPanel=new JPanel(new GridLayout(5,2));
-        labelPanel.setBackground(new Color(66,144,253,255));
+        labelPanel.setBackground(new Color(133, 232, 210));
 
         JLabel lblName=new JLabel("Name");
         lblName.setFont(new Font("",1,20));
         JPanel lblnamepanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        lblnamepanel.setBackground(new Color(66,144,253,255));
+        lblnamepanel.setBackground(new Color(133, 232, 210));
         lblnamepanel.add(lblName);
         labelPanel.add(lblnamepanel);
 
         txtName=new JTextField(10);
         txtName.setFont(new Font("",1,20));
         JPanel nameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
-        nameTextPanel.setBackground(new Color(66,144,253,255));
+        nameTextPanel.setBackground(new Color(133, 232, 210));
         nameTextPanel.add(txtName);
         labelPanel.add(nameTextPanel);
 
         JLabel lblNo=new JLabel("Phone No");
         lblNo.setFont(new Font("",1,20));
         JPanel lblphonepanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        lblphonepanel.setBackground(new Color(66,144,253,255));
+        lblphonepanel.setBackground(new Color(133, 232, 210));
         lblphonepanel.add(lblNo);
         labelPanel.add(lblphonepanel);
 
         txtNo=new JTextField(10);
         txtNo.setFont(new Font("",1,20));
         JPanel noTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
-        noTextPanel.setBackground(new Color(66,144,253,255));
+        noTextPanel.setBackground(new Color(133, 232, 210));
         noTextPanel.add(txtNo);
         labelPanel.add(noTextPanel);
 
         JLabel lblCName =new JLabel("Company Name");
         lblCName.setFont(new Font("",1,20));
         JPanel lblcompanypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        lblcompanypanel.setBackground(new Color(66,144,253,255));
+        lblcompanypanel.setBackground(new Color(133, 232, 210));
         lblcompanypanel.add(lblCName);
         labelPanel.add(lblcompanypanel);
 
         txtCName=new JTextField(10);
         txtCName.setFont(new Font("",1,20));
         JPanel CNameTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
-        CNameTextPanel.setBackground(new Color(66,144,253,255));
+        CNameTextPanel.setBackground(new Color(133, 232, 210));
         CNameTextPanel.add(txtCName);
         labelPanel.add(CNameTextPanel);
 
         JLabel lblSalary=new JLabel("Salary");
         lblSalary.setFont(new Font("",1,20));
         JPanel lblsalarypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        lblsalarypanel.setBackground(new Color(66,144,253,255));
+        lblsalarypanel.setBackground(new Color(133, 232, 210));
         lblsalarypanel.add(lblSalary);
         labelPanel.add(lblsalarypanel);
 
         txtSalary=new JTextField(6);
         txtSalary.setFont(new Font("",1,20));
         JPanel salaryTextPanel =new JPanel(new FlowLayout(FlowLayout.LEFT));
-        salaryTextPanel.setBackground(new Color(66,144,253,255));
+        salaryTextPanel.setBackground(new Color(133, 232, 210));
         salaryTextPanel.add(txtSalary);
         labelPanel.add(salaryTextPanel);
 
         JLabel lblBirth=new JLabel("Date of Birth");
         lblBirth.setFont(new Font("",1,20));
         JPanel lblbdaypanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        lblbdaypanel.setBackground(new Color(66,144,253,255));
+        lblbdaypanel.setBackground(new Color(133, 232, 210));
         lblbdaypanel.add(lblBirth);
         labelPanel.add(lblbdaypanel);
 
         txtBirth=new JTextField(10);
         txtBirth.setFont(new Font("",1,20));
         JPanel birthTextPanel=new JPanel(new FlowLayout(FlowLayout.LEFT));
-        birthTextPanel.setBackground(new Color(66,144,253,255));
+        birthTextPanel.setBackground(new Color(133, 232, 210));
         birthTextPanel.add(txtBirth);
         labelPanel.add(birthTextPanel);
 
         add("Center",labelPanel);
+
     }
 
     public static String contactidgenarate(){
